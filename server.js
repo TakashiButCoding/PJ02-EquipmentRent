@@ -177,7 +177,7 @@ const swaggerDocs = swaggerJsDoc({
       description: "REST API for equipment management and rental requests.",
     },
     servers: [{
-      url: `http://localhost:${process.env.PORT || 5000}`,
+      url:process.env.HOST + ':' + PPORT + '/api/vi',
     }],
     components: {
       securitySchemes: {
@@ -231,9 +231,12 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const server = app.listen(
   PORT, 
-  () => {
-  console.log(`Equipment Rental API running on http://localhost:${PORT}`);
-});
+  console.log(
+    "Server running in",
+    process.env.NODE_ENV,
+    "on "+ process.env.HOST + ":" + PORT
+  )
+);
 
 process.on("unhandledRejection", (error) => {
   console.error(`Unhandled rejection: ${error.message}`);
