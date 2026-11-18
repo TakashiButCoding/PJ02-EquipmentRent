@@ -229,7 +229,9 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => {
+const server = app.listen(
+  PORT, 
+  () => {
   console.log(`Equipment Rental API running on http://localhost:${PORT}`);
 });
 
